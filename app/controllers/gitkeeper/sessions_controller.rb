@@ -19,14 +19,13 @@ module Gitkeeper
   
     def destroy
       session[:user_id] = nil
-      redirect_to root_url, :notice => "Signed out!"
+      redirect_to '/'
     end
   
     protected
     def user_find_or_create_from_auth_hash(auth)
-      @user = User.where(nickname: auth['info']['nickname']).first || User.create_with_omniauth(auth)
-      session[:user_id] = @user.id.to_s
-      current_user = @user
+      user = User.where(nickname: auth['info']['nickname']).first || User.create_with_omniauth(auth)
+      session[:user_id] = user.id.to_s
     end
   end
 end

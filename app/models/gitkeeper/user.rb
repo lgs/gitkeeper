@@ -5,6 +5,8 @@ module Gitkeeper
     field :uid, type: String
     field :name, type: String
     field :email, type: String
+    field :nickname, type: String
+
   
     def self.create_with_omniauth(auth)
       create! do |user|
@@ -13,11 +15,12 @@ module Gitkeeper
         user.uid = auth["uid"]
         user.name = auth["info"]["name"]
         user.email = auth["info"]["email"]
-  
-        # Using OmniAuth to make Github/oAuth API requests
         user.nickname = auth['info']['nickname']
         # user.token = auth['credentials']['token']
         # user.secret = auth['credentials']['secret']
+
+        # extra, eventually
+        # user.raw_info = auth['extra']['raw_info']
       end
     end
   end
