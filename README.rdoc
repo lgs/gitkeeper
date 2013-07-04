@@ -1,3 +1,5 @@
 = Gitkeeper
 
+  mount Gitkeeper::Engine => "/gitkeeper"
+
 This project rocks and uses MIT-LICENSE.
