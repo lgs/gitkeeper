@@ -1,7 +1,8 @@
 Gitkeeper::Engine.routes.draw do
-  get "home/index"
-  # get '/signin' => 'sessions#new', to: :signin
-  get '/signout' => 'sessions#destroy', to: :signout
+  root 'home#index'
+
+  # get '/signin', to: 'sessions#new'
+  get '/signout', to: 'sessions#destroy'
+   # get '/auth/:provider', to: 'errors#error'
   get '/auth/:provider/callback', to: 'sessions#create'
-  # get '/auth/:provider', to: 'errors#error'
 end
