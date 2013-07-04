@@ -1,4 +1,4 @@
 module Gitkeeper
-  module HomeHelper
+  module AuthHelper
   end
 end

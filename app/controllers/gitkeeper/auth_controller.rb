@@ -1,7 +1,7 @@
 require_dependency "gitkeeper/application_controller"
 
 module Gitkeeper
-  class HomeController < ApplicationController
+  class AuthController < ApplicationController
     before_filter :current_user
 
     def index
