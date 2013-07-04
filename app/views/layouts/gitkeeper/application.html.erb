@@ -8,7 +8,11 @@
 </head>
 <body>
 
-<%= yield %>
+    <div id="user_nav">  
+      <%= link_to "Sign in with Github", "/auth/github" %>  
+    </div>  
+
+    <%= yield %>
 
 </body>
 </html>
