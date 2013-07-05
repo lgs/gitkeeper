@@ -14,12 +14,12 @@ module Gitkeeper
     # binding.pry
     def create
       user_find_or_create_from_auth_hash(request.env['omniauth.auth'])
-      redirect_to '/'
+      redirect_to '/auth'
     end
   
     def destroy
       session[:user_id] = nil
-      redirect_to '/'
+      redirect_to '/auth'
     end
   
     protected

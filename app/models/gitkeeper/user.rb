@@ -24,3 +24,4 @@ module Gitkeeper
       end
     end
   end
+end
