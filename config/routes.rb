@@ -1,6 +1,6 @@
 Gitkeeper::Engine.routes.draw do
   root to: 'auth#index'
 
-  get '/signout', to: 'sessions#destroy'
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/signout', to: 'auth#destroy'
+  get ':provider/callback', to: 'auth#create'
 end
