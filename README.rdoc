@@ -1,5 +1,65 @@
-= Gitkeeper
+= Gitkeeper for Rails 4.0.0
 
-  mount Gitkeeper::Engine => "/gitkeeper"
+First register your app on GitHub
+
+   https://github.com/settings/applications/new
+
+Name
+
+  localhost 
+
+URL
+ 
+  http://localhost:3000/
+
+Callback URL
+
+  http://localhost:3000/auth/github/callback
+
+Set environment variables for your local OS ( follow Linux/bash export )
+
+  export GITHUB_KEY=ffffffffffffffffffff 
+  export GITHUB_SECRET=9999999999999999999999999999999999999999
+
+Now create a brand new rails app
+
+  rails new host_app -T -O -B
+
+Change directory to host_app
+
+  cd host_app
+
+Add mongoid (4.0.0) for rails 4 
+
+  echo "gem 'mongoid', :git => 'git://github.com/mongoid/mongoid.git'" >> Gemfile
+  
+Include the engine in your app
+  
+  echo "gem 'gitkeeper'" >> Gemfile
+  bundle install
+
+Mount the engine adding the following to config/routes.rb
+
+  HostApp::Application.routes.draw do
+    mount Gitkeeper::Engine => "/auth"
+  end
+
+Config mongoid ( host_app/config/mongoid.yml ) and start MongoDB
+
+  development:
+    sessions:
+      default:
+        database: gitkeeper_dev
+        hosts:
+          - localhost:27017
+
+Run the server
+
+  rails s
+
+Visit the following URL
+
+  http://localhost:3000/auth/github/
 
 This project rocks and uses MIT-LICENSE.
+
