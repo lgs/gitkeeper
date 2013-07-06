@@ -7,19 +7,15 @@ module Gitkeeper
     #   Rails.logger.info "\r\n" + "#{Time.now} " + "auth = #{auth}" + "\r\n"
     # end 
   
-    # def new
-    #   redirect_to '/auth/#{config['provider']}'
-    # end
-  
     # binding.pry
     def create
       user_find_or_create_from_auth_hash(request.env['omniauth.auth'])
-      redirect_to '/auth'
+      redirect_to '/'
     end
   
     def destroy
       session[:user_id] = nil
-      redirect_to '/auth'
+      redirect_to '/'
     end
   
     protected
