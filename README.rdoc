@@ -1,4 +1,6 @@
 = Gitkeeper for Rails 4.0.0
+{}[https://codeclimate.com/github/lgs/gitkeeper]
+{<img src="https://codeclimate.com/github/lgs/gitkeeper.png" />}[https://codeclimate.com/github/lgs/gitkeeper]
 
 First register your app on GitHub
 
