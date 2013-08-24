@@ -65,3 +65,4 @@ Visit the following URL
 
 This project rocks and uses MIT-LICENSE.
 
+Copyright © 2013 Luca G. Soave
