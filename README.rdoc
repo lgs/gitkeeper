@@ -61,7 +61,7 @@ Run the server
 
 Visit the following URL
 
-  http://localhost:3000/auth/github/
+  http://localhost:3000/auth
 
 This project rocks and uses MIT-LICENSE.
 

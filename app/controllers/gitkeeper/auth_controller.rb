@@ -22,6 +22,7 @@ module Gitkeeper
   
     protected
     def user_find_or_create_from_auth_hash(auth)
+      binding.pry
       user = User.where(nickname: auth['info']['nickname']).first || User.create_with_omniauth(auth)
       session[:user_id] = user.id.to_s
     end
