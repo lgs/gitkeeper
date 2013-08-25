@@ -98,4 +98,9 @@ keep your way on merging, mixing, extending your hosting Rails (main)app User mo
 and also "Getting Started with Engines" -
 {Improving engine functionality}[http://guides.rubyonrails.org/engines.html#improving-engine-functionality]
 
-This project rocks and uses MIT-LICENSE.  Copyright © 2013 Luca G. Soave
+
+=== Copyright
+
+This project rocks and uses MIT-LICENSE.  
+
+Copyright © 2013 Luca G. Soave
