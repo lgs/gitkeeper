@@ -20,10 +20,10 @@ Callback URL
 
 Set environment variables for your local OS ( follow Linux/bash export )
 
-  export GITHUB_KEY=ffffffffffffffffffff 
-  export GITHUB_SECRET=9999999999999999999999999999999999999999
+  export GITHUB_KEY=put-your-Client-ID-here
+  export GITHUB_SECRET=put-your-Client-Secret-here
 
-Now create a brand new rails app
+Now create a brand new rails app. Please note we do skip Test::Unit files, skip Active Record files and we don't run bundle install.
 
   rails new host_app -T -O -B
 
@@ -63,6 +63,39 @@ Visit the following URL
 
   http://localhost:3000/auth
 
-This project rocks and uses MIT-LICENSE.
+== N O T E :
 
-Copyright © 2013 Luca G. Soave
+This is a Rails engine, which has to be mounted on a new or pre-existing Rails 4.0 app. The User model here, is 'name spaced' within gitkeeper_users, as you can see from the following Rails logs :
+
+  Started GET "/auth/github" for 127.0.0.1 at 2013-08-25 14:49:09 +0200
+  I, [2013-08-25T14:49:09.013975 #7623]  INFO -- omniauth: (github) Request phase initiated.
+
+
+  Started GET "/auth/github/callback?code=e70add25e236b56eba1b&state=140f77dbcddf2f013f8511ac2fbf61b0ed3e6481e434104a" for 127.0.0.1 at 2013-08-25 14:49:39 +0200
+  I, [2013-08-25T14:49:39.548098 #7623]  INFO -- omniauth: (github) Callback phase initiated.
+  Processing by Gitkeeper::AuthController#create as HTML
+    Parameters: {"code"=>"e70a345236b56iafdf7b", "state"=>"140f77dfbf61b0e12345asdddf04a", "provider"=>"github"}
+    MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.1914ms)
+    MOPED: 127.0.0.1:27017 QUERY        database=gitwatcher_new collection=gitkeeper_users selector={"$query"=>{"nickname"=>"lgs"}, "$orderby"=>{:_id=>1}} flags=[:slave_ok] limit=-1 skip=0 batch_size=nil fields=nil (0.7005ms)
+  Redirected to http://localhost:3001/auth
+  Completed 302 Found in 4ms
+
+
+  Started GET "/auth" for 127.0.0.1 at 2013-08-25 14:49:40 +0200
+  Processing by Gitkeeper::AuthController#index as HTML
+    MOPED: 127.0.0.1:27017 QUERY        database=gitwatcher_new collection=gitkeeper_users selector={"_id"=>"5219f45777c68000001"} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5410ms)
+    Rendered /home/github/gitkeeper/app/views/gitkeeper/auth/index.html.erb within layouts/gitkeeper/application (0.2ms)
+  Completed 200 OK in 7ms (Views: 4.3ms)
+
+and by querying directly mongodb with mongo shell :
+
+  > db.gitkeeper_users.find()
+  { "_id" : ObjectId("5219f45777c68000001"), "provider" : "github", "uid" : "1573", "name" : "Luca G. Soave", "email" : "luca.soave@gmail.com", "nickname" : "lgs" }
+  > 
+
+keep your way on merging, mixing, extending your hosting Rails (main)app User model. Fore more infos, see also : 
+{Extending a Model From an Engine in Your Rails App}[http://www.bencurtis.com/2010/10/extending-a-model-from-an-engine-in-your-rails-app/]
+and also "Getting Started with Engines" -
+{Improving engine functionality}[http://guides.rubyonrails.org/engines.html#improving-engine-functionality]
+
+This project rocks and uses MIT-LICENSE.  Copyright © 2013 Luca G. Soave
