@@ -20,6 +20,6 @@ Gem::Specification.new do |s|
   s.add_dependency "omniauth", "~> 1.2.1"
   s.add_dependency "omniauth-github", "~> 1.1.1"
   s.add_dependency "omniauth-oauth2", "~> 1.1.2"
-  #s.add_dependency "mongoid", "~> 4.0.0"
+  # s.add_dependency "mongoid", "~> 4.0.0"
 end
 
