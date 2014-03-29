@@ -1,4 +1,4 @@
-= Gitkeeper for Rails 4.0.0
+= Gitkeeper for Rails 4.1.0
 {<img src="https://codeclimate.com/github/lgs/gitkeeper.png" />}[https://codeclimate.com/github/lgs/gitkeeper]
 {<img src="https://gemnasium.com/lgs/gitkeeper.png" alt="Dependency Status" />}[https://gemnasium.com/lgs/gitkeeper]
 
@@ -32,7 +32,7 @@ Change directory to host_app
 
   cd host_app
 
-Add mongoid (4.0.0) for rails 4 
+Add mongoid (4.0.0) for rails 4.1.0 
 
   echo "gem 'mongoid', :git => 'git://github.com/mongoid/mongoid.git'" >> Gemfile
   
@@ -66,7 +66,7 @@ Visit the following URL
 
 == N O T E :
 
-This is a Rails engine, which has to be mounted on a new or pre-existing Rails 4.0 app. The User model here, is 'name spaced' within gitkeeper_users, as you can see from the following Rails logs :
+This is a Rails engine, which has to be mounted on a new or pre-existing Rails 4.1.0 app. The User model here, is 'name spaced' within gitkeeper_users, as you can see from the following Rails logs :
 
   Started GET "/auth/github" for 127.0.0.1 at 2013-08-25 14:49:09 +0200
   I, [2013-08-25T14:49:09.013975 #7623]  INFO -- omniauth: (github) Request phase initiated.
