@@ -1,4 +1,4 @@
-Gitkeeper::Engine.routes.draw do
+Rails.application.routes.draw do
   root to: 'auth#index'
 
   get '/signout', to: 'auth#destroy'
